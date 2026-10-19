@@ -47,7 +47,11 @@ void loop() //programa do lcd deve estar no loop
     lcd.setCursor(0,0);
     lcd.printf("Clima hoje: ");
     lcd.setCursor(0,1);
-    lcd.printf("%c\n\r", clima.c_str());
+    lcd.printf("%s\n\r", clima.c_str());
+    lcd.setCursor(0,2);
+    lcd.printf("Temperatura Hoje: ");
+    lcd.setCursor(0,3);
+    lcd.printf("%s\n\r", temperatura.c_str());
 
     //lcd.printf("Temperatura Atual %d C e sensacao térmica de %d C", temperatura, sensacaoTermica);
 }
