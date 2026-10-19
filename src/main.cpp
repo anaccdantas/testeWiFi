@@ -32,21 +32,24 @@ void setup()
     Serial.printf("Endereco IP: %s\n\r", WiFi.localIP().toString().c_str());
     Serial.printf("Endereco MAC: %s\n\r", WiFi.macAddress().c_str());
 
+}
+
+void loop() //programa do lcd deve estar no loop
+{
     String clima;
     String temperatura;
     String sensacaoTermica;
     clima = pedirParaApiClima("%C");
     temperatura = pedirParaApiClima("%t").toInt();
     sensacaoTermica = pedirParaApiClima("%f").toInt();
-
-    Serial.printf("Condicao climatica para hoje: %s\n\r", clima.c_str());
-    Serial.printf("Temperatura Atual %d C e sensacao térmica de %d C", temperatura, sensacaoTermica);
-}
-
-void loop() //programa do lcd deve estar no loop
-{
+    
+    
     lcd.setCursor(0,0);
-    lcd.print(clima);
+    lcd.printf("Clima hoje: ");
+    lcd.setCursor(0,1);
+    lcd.printf("%c\n\r", clima.c_str());
+
+    //lcd.printf("Temperatura Atual %d C e sensacao térmica de %d C", temperatura, sensacaoTermica);
 }
 
 String pedirParaApiClima(String codigo)
